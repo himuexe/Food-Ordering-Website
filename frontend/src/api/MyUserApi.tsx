@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {User} from "../types";
 import { toast } from "sonner";
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:7000";
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:7000/";
 
 
   export const useGetMyUser = () => {
@@ -12,7 +12,7 @@ const API_BASE_URL =
     const getMyUserRequest = async (): Promise<User> => {
       const accessToken = await getAccessTokenSilently();
   
-      const response = await fetch(`${API_BASE_URL}/api/my/user`, {
+      const response = await fetch(`${API_BASE_URL}api/my/user`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -49,7 +49,7 @@ export const useCreateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
   const createMyUserRequest = async (user: CreateUserRequest) => {
     const accessToken = await getAccessTokenSilently();
-    const response = await fetch(`${API_BASE_URL}/api/my/user`, {
+    const response = await fetch(`${API_BASE_URL}api/my/user`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${accessToken}`,
